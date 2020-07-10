@@ -4,6 +4,7 @@ import logging.config
 import optparse
 import os
 import os.path
+import glob
 import re
 import sys
 import tempfile
