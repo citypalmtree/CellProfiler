@@ -836,23 +836,8 @@ def run_pipeline_headless(options, args):
     if file_list is not None:
         pipeline.read_file_list(file_list)
     elif options.image_directory is not None:
-        pathnames = []
-
-        os.path.walk(
-            os.path.abspath(options.image_directory),
-            lambda pathnames, dirname, fnames: pathnames.append(
-                [
-                    os.path.join(dirname, fname)
-                    for fname in fnames
-                    if os.path.isfile(os.path.join(dirname, fname))
-                ]
-            ),
-            pathnames,
-        )
-
-        pathnames = sum(pathnames, [])
-
-        pipeline.add_pathnames_to_file_list(pathnames)
+        #MODIFICATION - os.path.walk has been deprecated
+        pipeline.add_pathnames_to_file_list(glob.glob(os.path.join(options.image_directory, "*")))
 
     #
     # Fixup CreateBatchFiles with any command-line input or output directories
