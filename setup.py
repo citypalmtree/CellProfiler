@@ -60,7 +60,6 @@ setuptools.setup(
     },
     install_requires=[
         "boto3",
-        "centrosome",
         "docutils",
         "h5py",
         "inflect",
